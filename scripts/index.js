@@ -84,6 +84,7 @@ function displayItemOnHomePage() {
 
 function searchItems() {
     let searchElement = document.getElementById('search-input');
+    if (!searchElement) return;
 
     searchElement.addEventListener('input', () => {
         let searchText = searchElement.value.toLowerCase();
@@ -139,6 +140,7 @@ function displayFilteredItems(filteredItems) {
 function sortItems() {
     let sortSelect = document.getElementById('sort-select');
 
+    if (!sortSelect) return;
     sortSelect.addEventListener('change', () => {
         let sortedItems = [...currentItems];
 
