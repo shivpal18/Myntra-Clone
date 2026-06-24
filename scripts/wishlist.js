@@ -24,6 +24,7 @@ function loadWishlistItems() {
 
 function displayWishlistItems() {
     let containerElement = document.querySelector('.bag-items-container');
+    let headingElement = document.querySelector('.bag-heading');
 
     if (wishlistItemObjects.length === 0) {
         containerElement.innerHTML = `
@@ -36,11 +37,12 @@ function displayWishlistItems() {
                 </a>
             </div>
         `;
-        document.querySelector('.bag-heading').style.display = 'none';
+        headingElement.style.display = 'none';
         return;
     }
 
-    document.querySelector('.bag-heading').style.display = 'block';
+    headingElement.style.display = 'block';
+    headingElement.innerText = `❤️ My Wishlist (${wishlistItemObjects.length} Items)`;
     let innerHTML = '';
 
     wishlistItemObjects.forEach(item => {
@@ -58,6 +60,9 @@ function displayWishlistItems() {
                 <div class="price-container">
                     <span class="current-price">Rs ${item.current_price}</span>
                 </div>
+                <button class="move-to-bag-btn" onclick="moveToBag('${item.id}')">
+                    Move to Bag
+                </button>
             </div>
         </div>
         `;
@@ -69,6 +74,22 @@ function displayWishlistItems() {
 function removeFromWishlist(itemId) {
     wishlistItems = wishlistItems.filter(id => id !== itemId);
 
+    localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
+
+    loadWishlistItems();
+    displayWishlistItems();
+    displayWishlistIcon();
+}
+
+function moveToBag(itemId) {
+    let bagItems = JSON.parse(localStorage.getItem('bagItems')) || [];
+
+    if (!bagItems.includes(itemId)) {
+        bagItems.push(itemId);
+        localStorage.setItem('bagItems', JSON.stringify(bagItems));
+    }
+
+    wishlistItems = wishlistItems.filter(id => id !== itemId);
     localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
 
     loadWishlistItems();

@@ -340,6 +340,7 @@ a.action_container:link {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
+    z-index: 9999;
 }
 
 #toast.show{

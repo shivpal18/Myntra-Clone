@@ -46,6 +46,7 @@ function showToast(message) {
     if (!toast) return;
 
     toast.innerText = message;
+
     toast.classList.add('show');
 
     setTimeout(() => {
@@ -164,10 +165,12 @@ function sortItems() {
 function toggleWishlist(icon, itemId) {
     if (icon.innerText === '🤍') {
         icon.innerText = '❤️';
+        showToast('❤️ Added to Wishlist');
         wishlistItems.push(itemId);
         localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
     } else {
         icon.innerText = '🤍';
+        showToast('💔 Removed from Wishlist');
         wishlistItems = wishlistItems.filter(id => id !== itemId);
         localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
     }
