@@ -380,3 +380,249 @@ a.action_container:link {
     cursor: pointer;
     visibility: hidden;
 }
+
+.product-modal{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.modal-content{
+    width: 400px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    transform: scale(0.8);
+    animation: modalOpen 0.3s ease forwards;
+}
+
+.modal-content img{
+    width: 220px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+}
+
+.modal-content img:hover{
+    transform: scale(1.08);
+}
+
+.close-modal{
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#modal-company{
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+#modal-name{
+    color: #888;
+    margin-bottom: 12px;
+}
+
+#modal-price{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#modal-add-bag{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #ff3f6c;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#modal-rating{
+    margin: 10px 0;
+    font-size: 15px;
+    color: #03a685;
+    font-weight: 600;
+}
+
+@keyframes modalOpen{
+    from{
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.close-modal{
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover{
+    color: #ff3f6c;
+    transform: rotate(90deg);
+}
+
+@media (max-width: 768px){
+
+    /* Header */
+    header{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        height: auto;
+        padding: 10px 15px;
+    }
+
+    .logo_container{
+        margin: 0;
+    }
+
+    .myntra_home{
+        height: 38px;
+    }
+
+    .action_bar{
+        min-width: auto;
+        margin: 0;
+        gap: 12px;
+    }
+
+    .action_name{
+        display: none;
+    }
+
+    .search_bar{
+        order: 3;
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    .search_input{
+        font-size: 14px;
+        width: 100%;
+    }
+
+    /* Navigation */
+    .nav_bar{
+        order: 4;
+        width: 100%;
+        min-width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        gap: 18px;
+        padding: 10px 0;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .nav_bar::-webkit-scrollbar{
+        display: none;
+    }
+
+    .nav_bar a{
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .nav_bar::-webkit-scrollbar{
+        display: none;
+    }
+
+    .nav_bar a{
+        flex: 0 0 auto;
+        white-space: nowrap;
+        font-size: 13px;
+        padding: 8px 0;
+    }
+
+    /* Products */
+    .items-container{
+        width: 100%;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        justify-items: center;
+        padding: 0 10px;
+    }
+
+    .item-container{
+        width: 100%;
+        max-width: 185px;
+        margin: 0;
+    }
+
+    .item-image{
+        width: 100%;
+        height: auto;
+    }
+
+    .company-name{
+        font-size: 14px;
+    }
+
+    .item-name{
+        font-size: 12px;
+    }
+
+    .price{
+        font-size: 12px;
+    }
+
+    .btn-add-bag{
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    /* Modal */
+    .modal-content{
+        width: 90%;
+        max-width: 350px;
+        padding: 15px;
+    }
+
+    .modal-content img{
+        width: 180px;
+    }
+
+    /* Footer */
+    .footer_container{
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .footer_column{
+        align-items: center;
+    }
+
+    #sort-select{
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #sort-select{
+        display: none;
+    }
+}

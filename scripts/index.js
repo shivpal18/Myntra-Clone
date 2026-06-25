@@ -16,6 +16,12 @@ function onLoad() {
     searchItems();
     sortItems();
     displayWishlistIcon();
+    document.querySelector('.close-modal').addEventListener('click', closeProductModal);
+    document.getElementById('product-modal').addEventListener('click', function (event) {
+        if (event.target.id === 'product-modal') {
+            closeProductModal();
+        }
+    });
 
     let savedTheme = localStorage.getItem('theme');
 
@@ -31,6 +37,11 @@ function onLoad() {
     if (themeToggle) {
         themeToggle.addEventListener('click', toggleTheme);
     }
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeProductModal();
+        }
+    });
 } 
 
 function addToBag(itemId) {
@@ -77,9 +88,9 @@ function displayItemOnHomePage() {
     let innerHTML = '';
     items.forEach(item => {
         innerHTML += `
-    <div class="item-container">
+    <div class="item-container" onclick="openProductModal('${item.id}')">
         <img class="item-image" src="${item.image}" alt="item image">
-        <span class="wishlist-icon" onclick="toggleWishlist(this, '${item.id}')">
+        <span class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist(this, '${item.id}')">
             ${wishlistItems.includes(item.id) ? '❤️' : '🤍'}
         </span>
         <div class="rating">
@@ -92,7 +103,7 @@ function displayItemOnHomePage() {
                 <span class="original-price">Rs ${item.original_price}</span>
                 <span class="discount">(${item.discount_percentage}% OFF)</span>
         </div>
-        <button class="btn-add-bag" onclick="addToBag('${item.id}')">Add to Bag</button>
+        <button class="btn-add-bag" onclick="event.stopPropagation(); addToBag('${item.id}')">Add to Bag</button>
     </div>`
     });
     itemsContainerElement.innerHTML = innerHTML;
@@ -215,4 +226,31 @@ function toggleTheme() {
         localStorage.setItem('theme', 'light');
         themeIcon.innerText = 'dark_mode';
     }
+}
+
+function openProductModal(itemId) {
+
+    let selectedItem = items.find(item => item.id == itemId);
+
+    document.getElementById('modal-image').src = selectedItem.image;
+    document.getElementById('modal-company').innerText = selectedItem.company;
+    document.getElementById('modal-name').innerText = selectedItem.item_name;
+    document.getElementById('modal-rating').innerHTML =
+    `⭐ ${selectedItem.rating.stars} (${selectedItem.rating.count} Ratings)`;
+    document.getElementById('modal-price').innerHTML =
+        `₹${selectedItem.current_price}
+         <span style="text-decoration:line-through;color:gray;">
+            ₹${selectedItem.original_price}
+         </span>
+         (${selectedItem.discount_percentage}% OFF)`;
+
+    document.getElementById('modal-add-bag').onclick = function () {
+        addToBag(itemId);
+    };
+
+    document.getElementById('product-modal').style.display = 'flex';
+}
+
+function closeProductModal() {
+    document.getElementById('product-modal').style.display = 'none';
 }
