@@ -626,3 +626,64 @@ a.action_container:link {
         display: none;
     }
 }
+
+.profile-container{
+    position: relative;
+}
+
+.profile-dropdown{
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 220px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    flex-direction: column;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.profile-dropdown a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background 0.3s ease;
+}
+
+.profile-dropdown a:hover{
+    background: #ff3f6c;
+    color: white;
+}
+
+.profile-dropdown a:hover .material-symbols-outlined{
+    color: white;
+}
+
+.profile-dropdown.show{
+    display: flex;
+}
+
+.profile-dropdown{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.25s ease;
+    display: flex;
+}
+
+.profile-dropdown.show{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.profile-dropdown hr{
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 4px 0;
+}
