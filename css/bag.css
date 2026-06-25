@@ -2,9 +2,9 @@
   display: inline-block;
   width: 64%;
   padding-right: 20px;
-  border-right: 1px solid #eaeaec;
+  border-right: 1px solid var(--border-color);
   padding-top: 32px;
-  color: #282c3f;
+  color: var(--text-color);
   font-size: 13px;
   line-height: 1.42857143;
 }
@@ -19,7 +19,7 @@
   display: inline-block;
   width: 35%;
   padding: 24px 0 0 16px;
-  color: #282c3f;
+  color: var(--text-color);
   font-size: 13px;
   line-height: 1.42857143;
 }
@@ -32,14 +32,14 @@
   font-size: 12px;
   font-weight: 700;
   margin: 24px 0 16px;
-  color: #535766;
+  color: #b8b8b8;
 }
 
 .price-item {
   margin-bottom: 12px;
   line-height: 16px;
   font-size: 14px;
-  color: #282c3f;
+  color: var(--text-color);
 }
 
 .price-item-value {
@@ -54,8 +54,8 @@
   font-weight: 700;
   font-size: 15px;
   padding-top: 16px;
-  border-top: 1px solid #eaeaec;
-  color: #3e4152;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-color);
   line-height: 16px;
 }
 
@@ -74,9 +74,9 @@
 
 .bag-item-container {
   margin-bottom: 8px;
-  background: #fff;
+  background: var(--card-bg);
   font-size: 14px;
-  border: 1px solid #eaeaec;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   position: relative;
   padding: 12px 12px 0;
@@ -114,7 +114,7 @@
 
 .delivery-details {
   margin-top: 5px;
-  color: #282c3f;
+  color: var(--text-color);
   font-size: 12px;
   letter-spacing: -.1px;
   margin-bottom: 8px;
@@ -153,17 +153,17 @@
 
 .empty-bag h2{
     margin-bottom: 10px;
-    color: #282c3f;
+    color: var(--text-color);
 }
 
 .empty-bag p{
     margin-bottom: 20px;
-    color: #696b79;
+    color: #b8b8b8;
 }
 
 .bag-heading{
     margin: 20px 0;
-    color: #282c3f;
+    color: var(--text-color);
     font-size: 24px;
     font-weight: 700;
 }
