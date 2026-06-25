@@ -6,6 +6,20 @@ function onLoad() {
     loadBagItemObjects();
     displayBagItems();
     displayBagSummary();
+
+    let savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        let icon = document.querySelector("#theme-toggle .action_icon");
+        if (icon) icon.innerText = "light_mode";
+    }
+
+    let themeBtn = document.getElementById("theme-toggle");
+
+    if (themeBtn) {
+        themeBtn.addEventListener("click", toggleTheme);
+    }
 }
 
 function displayBagSummary() {
@@ -144,4 +158,18 @@ function generateItemHTML(item) {
 
         <div class="remove-from-cart" onclick="removeFromBag(${item.id})">X</div>
     </div>`;
+}
+
+function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
+
+    let icon = document.querySelector("#theme-toggle .action_icon");
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+        if (icon) icon.innerText = "light_mode";
+    } else {
+        localStorage.setItem("theme", "light");
+        if (icon) icon.innerText = "dark_mode";
+    }
 }
