@@ -278,3 +278,29 @@
         width: 100%;
     }
 }
+
+.bag-quantity{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.bag-quantity button{
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background: #ff3f6c;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.bag-quantity span{
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}

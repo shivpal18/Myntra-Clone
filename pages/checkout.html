@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Myntra</title>
+
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/checkout.css">
+
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo_container">
+        <a href="../index.html">
+            <img class="myntra_home" src="../images/myntra logo.avif" alt="">
+        </a>
+    </div>
+
+    <nav class="nav_bar">
+        <a href="#">Men</a>
+        <a href="#">Women</a>
+        <a href="#">Kids</a>
+        <a href="#">Home & Living</a>
+        <a href="#">Beauty</a>
+        <a href="#">Studio <sup>NEW</sup></a>
+    </nav>
+
+    <div class="action_bar">
+
+        <div class="action_container" id="theme-toggle">
+            <span class="material-symbols-outlined action_icon">dark_mode</span>
+            <span class="action_name">Theme</span>
+        </div>
+
+        <a class="action_container" href="wishlist.html">
+            <span class="material-symbols-outlined action_icon">favorite</span>
+            <span class="action_name">Wishlist</span>
+            <span class="wishlist-item-count">0</span>
+        </a>
+
+        <a class="action_container" href="bag.html">
+            <span class="material-symbols-outlined action_icon">shopping_bag</span>
+            <span class="action_name">Bag</span>
+            <span class="bag-item-count">0</span>
+        </a>
+
+    </div>
+
+</header>
+
+<main class="checkout-page">
+
+    <div class="checkout-left">
+
+        <h2>Delivery Address</h2>
+
+        <div id="delivery-address"></div>
+
+        <h2>Payment Method</h2>
+
+        <div class="payment-box">
+
+            <label>
+                <input type="radio" name="payment" checked>
+                Cash On Delivery
+            </label>
+
+            <label>
+                <input type="radio" name="payment">
+                UPI
+            </label>
+
+            <label>
+                <input type="radio" name="payment">
+                Credit / Debit Card
+            </label>
+
+        </div>
+
+    </div>
+
+    <div class="checkout-right">
+
+        <h2>Order Summary</h2>
+
+        <div id="checkout-summary"></div>
+
+        <button id="place-order-btn">
+            PLACE ORDER
+        </button>
+
+    </div>
+
+</main>
+
+<script src="../data/items.js"></script>
+<script src="../scripts/common.js"></script>
+<script src="../scripts/checkout.js"></script>
+
+</body>
+</html>

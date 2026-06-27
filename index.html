@@ -27,12 +27,7 @@
             class="search_input" 
             placeholder="Search for products, brands and more">
         </div>
-        <select id="sort-select">
-            <option value="">Sort By</option>
-            <option value="low-high">Price: Low to High</option>
-            <option value="high-low">Price: High to Low</option>
-            <option value="rating">Highest Rated</option>
-        </select>
+        
         <div class="action_bar">
             <div class="action_container" id="theme-toggle">
                 <span class="material-symbols-outlined action_icon">dark_mode</span>
@@ -46,12 +41,12 @@
 
                 <div class="profile-dropdown" id="profile-dropdown">
 
-                    <a href="#">
+                    <a href="pages/profile.html">
                         <span class="material-symbols-outlined">person</span>
                          My Profile
                     </a>
 
-                    <a href="#">
+                    <a href="pages/orders.html">
                         <span class="material-symbols-outlined">package_2</span>
                         Orders
                     </a>
@@ -68,7 +63,7 @@
                         Bag
                     </a>
 
-                    <a href="#">
+                    <a href="pages/contact.html">
                         <span class="material-symbols-outlined">call</span>
                         Contact
                     </a>
@@ -93,8 +88,24 @@
             <div id="toast"></div>
 
     <main>
-        <div class="items-container">
+
+        <div class="products-header">
+
+            <h2>All Products</h2>
+
+            <select id="sort-select">
+                <option value="">Sort By</option>
+                <option value="low-high">Price: Low to High</option>
+                <option value="high-low">Price: High to Low</option>
+                <option value="rating">Highest Rated</option>
+            </select>
+
         </div>
+
+        <div class="items-container">
+
+        </div>
+
     </main>
 
     <div class="product-modal" id="product-modal">

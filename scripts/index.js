@@ -51,15 +51,20 @@ function onLoad() {
     }
 } 
 
-function addToBag(itemId) {
-    if (!bagItems.includes(itemId)) {
-        bagItems.push(itemId);
-        localStorage.setItem('bagItems', JSON.stringify(bagItems));
-        displayBagIcon();
-        showToast('✅ Item Added to Bag');
-    } else{
-        showToast('⚠️ Item Already in Bag');
+function addToBag(itemId, quantity = 1) {
+    let existingItem = bagItems.find(item => item.id === itemId);
+    if (existingItem) {
+        existingItem.quantity += quantity;
+        showToast(`✅ Quantity Updated (${existingItem.quantity})`);
+    } else {
+        bagItems.push({
+            id: itemId,
+            quantity: quantity
+        });
+        showToast("✅ Item Added to Bag");
     }
+    localStorage.setItem("bagItems", JSON.stringify(bagItems));
+    displayBagIcon();
 }
 
 function displayBagIcon() {
@@ -95,7 +100,7 @@ function displayItemOnHomePage() {
     let innerHTML = '';
     items.forEach(item => {
         innerHTML += `
-    <div class="item-container" onclick="openProductModal('${item.id}')">
+    <div class="item-container" onclick="openProduct('${item.id}')">
         <img class="item-image" src="${item.image}" alt="item image">
         <span class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist(this, '${item.id}')">
             ${wishlistItems.includes(item.id) ? '❤️' : '🤍'}
@@ -246,4 +251,8 @@ function openProductModal(itemId) {
 
 function closeProductModal() {
     document.getElementById('product-modal').style.display = 'none';
+}
+
+function openProduct(itemId) {
+    window.location.href = `pages/product.html?id=${itemId}`;
 }

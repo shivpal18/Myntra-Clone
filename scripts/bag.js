@@ -16,13 +16,17 @@ function displayBagSummary() {
         return;
     }
 
-    let totalItem = bagItemObjects.length;
+    let totalItem = bagItemObjects.reduce(
+        (total, item) => total + item.quantity,
+        0
+    );
     let totalMRP = 0;
     let totalDiscount = 0;
 
     bagItemObjects.forEach(bagItem => {
-        totalMRP += bagItem.original_price;
-        totalDiscount += (bagItem.original_price - bagItem.current_price);
+        totalMRP += bagItem.original_price * bagItem.quantity
+        totalDiscount +=
+            (bagItem.original_price - bagItem.current_price) * bagItem.quantity;
     });
 
     let finalPayment = totalMRP - totalDiscount + CONVENIENCE_FEES;
@@ -54,29 +58,31 @@ function displayBagSummary() {
             </div>
         </div>
 
-        <button class="btn-place-order">
+        <button class="btn-place-order" onclick="goToCheckout()">
             <div class="css-xjhrni">PLACE ORDER</div>
         </button>
     `;
 }
 
 function loadBagItemObjects() {
-    console.log(bagItems);
-    bagItemObjects = bagItems.map(itemId => {
-        for (let i = 0; i < items.length; i++) {
-            if (itemId == items[i].id) {
-                return items[i];
-            }
-        }
-    })
-    console.log(bagItemObjects);
+
+    bagItemObjects = bagItems.map(bagItem => {
+        let product = items.find(item => item.id == bagItem.id);
+        return {
+            ...product,
+            quantity: bagItem.quantity
+        };
+    });
 }
 
 function displayBagItems() {
     let containerElement = document.querySelector('.bag-items-container');
     let headingElement = document.querySelector('.bag-heading');
 
-    headingElement.innerText = `Shopping Bag (${bagItemObjects.length} Items)`;
+    let totalItems = bagItemObjects.reduce((total, item) => {
+        return total + item.quantity;
+    }, 0);
+    headingElement.innerText = `Shopping Bag (${totalItems} Items)`;
 
     if (bagItemObjects.length === 0) {
         headingElement.innerText = '';
@@ -103,8 +109,8 @@ function displayBagItems() {
 }
 
 function removeFromBag(itemId) {
-    bagItems = bagItems.filter(bagItemID => bagItemID != itemId);
-    localStorage.setItem('bagItems', JSON.stringify(bagItems));
+    bagItems = bagItems.filter(item => item.id != itemId);
+    localStorage.setItem("bagItems", JSON.stringify(bagItems));
     loadBagItemObjects();
     displayBagIcon();
     displayBagItems();
@@ -140,8 +146,63 @@ function generateItemHTML(item) {
                 Delivery by
                 <span class="delivery-details-days">${formattedDate}</span>
             </div>
+            <div class="bag-quantity">
+                <button onclick="decreaseQuantity('${item.id}')">−</button>
+                <span>${item.quantity}</span>
+                <button onclick="increaseQuantity('${item.id}')">+</button>
+            </div>
         </div>
 
         <div class="remove-from-cart" onclick="removeFromBag(${item.id})">X</div>
     </div>`;
+}
+
+function increaseQuantity(itemId) {
+
+    let item = bagItems.find(item => item.id == itemId);
+
+    if (item) {
+        item.quantity++;
+    }
+
+    localStorage.setItem("bagItems", JSON.stringify(bagItems));
+
+    loadBagItemObjects();
+    displayBagItems();
+    displayBagSummary();
+    displayBagIcon();
+}
+
+function decreaseQuantity(itemId) {
+
+    let item = bagItems.find(item => item.id == itemId);
+
+    if (!item) return;
+
+    if (item.quantity > 1) {
+
+        item.quantity--;
+
+    } else {
+
+        bagItems = bagItems.filter(item => item.id != itemId);
+
+    }
+
+    localStorage.setItem("bagItems", JSON.stringify(bagItems));
+
+    loadBagItemObjects();
+    displayBagItems();
+    displayBagSummary();
+    displayBagIcon();
+}
+
+function goToCheckout() {
+
+    if (bagItems.length === 0) {
+        alert("Your Bag is Empty");
+        return;
+    }
+
+    window.location.href = "checkout.html";
 }
