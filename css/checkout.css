@@ -85,4 +85,26 @@
         position: static;
     }
 
+    .checkout-left{
+        width: 100%;
+    }
+    .address-card{
+        padding: 18px;
+    }
+
+    .payment-card{
+        padding: 18px;
+    }
+
+    .order-summary{
+        margin-top: 20px;
+    }
+
+    .place-order-btn{
+        width: 100%;
+    }
+
+    .saved-address{
+        word-break: break-word;
+    }
 }

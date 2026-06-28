@@ -253,7 +253,7 @@
 
     .bag-item-img{
         width: 100%;
-        max-width: 220px;
+        max-width: 180px;
         display: block;
         margin: auto;
     }
@@ -276,6 +276,44 @@
 
     .btn-place-order{
         width: 100%;
+    }
+
+    .bag-heading{
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .company{
+        font-size: 18px;
+        margin-top: 12px;
+    }
+
+    .item-name{
+        font-size: 15px;
+        margin-top: 4px;
+    }
+
+    .bag-quantity{
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .return-period,
+    .delivery-details{
+        font-size: 14px;
+    }
+
+    .current-price{
+        font-size: 18px;
+    }
+
+    .original-price{
+        font-size: 14px;
+    }
+
+    .discount-percentage{
+        font-size: 14px;
     }
 }
 

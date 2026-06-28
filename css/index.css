@@ -509,9 +509,8 @@ a.action_container:link {
     }
 
     .action_bar{
-        min-width: auto;
         margin: 0;
-        gap: 12px;
+        gap: 10px;
     }
 
     .action_name{
@@ -521,12 +520,13 @@ a.action_container:link {
     .search_bar{
         order: 3;
         width: 100%;
-        margin-top: 12px;
+        margin: 15px 0;
     }
 
     .search_input{
         font-size: 14px;
         width: 100%;
+        padding-left: 8px;
     }
 
     /* Navigation */
@@ -536,22 +536,13 @@ a.action_container:link {
         min-width: 100%;
         display: flex;
         justify-content: flex-start;
-        gap: 18px;
+        gap: 28px;
         padding: 10px 0;
         overflow-x: auto;
         overflow-y: hidden;
         white-space: nowrap;
         -ms-overflow-style: none;
         scrollbar-width: none;
-    }
-
-    .nav_bar::-webkit-scrollbar{
-        display: none;
-    }
-
-    .nav_bar a{
-        flex: 0 0 auto;
-        white-space: nowrap;
     }
 
     .nav_bar::-webkit-scrollbar{
@@ -578,30 +569,54 @@ a.action_container:link {
 
     .item-container{
         width: 100%;
-        max-width: 185px;
+        max-width: 190px;
         margin: 0;
+        border-radius: 10px;
+        overflow: hidden;
     }
 
     .item-image{
         width: 100%;
-        height: auto;
+        height: 250px;
+        object-fit: cover;
     }
 
     .company-name{
-        font-size: 14px;
+        font-size: 13px;
+        margin-top: 10px;
+        padding: 0 8px;
     }
 
     .item-name{
         font-size: 12px;
+        padding: 0 8px;
+    }
+
+    .rating{
+        font-size: 11px;
+        padding: 8px;
     }
 
     .price{
-        font-size: 12px;
+        padding: 0 8px;
+        margin-top: 6px;
+    }
+
+    .current-price{
+        font-size: 13px;
+    }
+
+    .original-price,
+    .discount{
+        font-size: 11px;
     }
 
     .btn-add-bag{
-        font-size: 14px;
-        padding: 8px;
+        width: calc(100% - 16px);
+        margin: 10px 8px;
+        padding: 10px;
+        font-size: 13px;
+        border-radius: 8px;
     }
 
     /* Modal */
@@ -626,13 +641,27 @@ a.action_container:link {
         align-items: center;
     }
 
-    #sort-select{
-        width: 100%;
-        margin: 10px 0;
+    .products-header{
+        width: 95%;
+        margin: 20px auto;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .products-header h2{
+        font-size: 22px;
     }
 
     #sort-select{
-        display: none;
+        width: 100px;
+        margin: 0;
+    }
+
+    .wishlist-icon{
+        font-size: 22px;
+        top: 8px;
+        right: 8px;
     }
 }
 
